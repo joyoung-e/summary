@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                table-layout: fixed;
+            }
+
+            .blind {
+                position: absolute;
+                text-indent: -99999px;
+                overflow: hidden;
+            }
+
+            .boardList {
+                max-width: 600px;
+                margin: 50px auto;
+            }
+
+            .boardList .title {
+                display: flex;
+                padding-right: 50px;
+            }
+
+            .boardList .title li {
+                flex: 1;
+                border: 1px solid #000;
+                text-align: center;
+            }
+
+            .boardList .title li.on {
+                background: yellow;
+            }
+
+            .container .content {
+                display: none;
+                position: relative;
+            }
+
+            .container .content.on {
+                display: block;
+            }
+
+            .container .content table {
+                border: 0px solid red;
+                /* border-collapse: collapse; 보더를 한줄로 만드는 속성 */
+            }
+
+            .container .content table th,
+            .container .content table td {
+                padding: 5px;
+                border-bottom: 1px solid gray;
+                text-align: center;
+            }
+
+            .container .content table th {
+                border-top: 1px solid gray;
+            }
+
+            .container .content table td:nth-child(2) {
+                text-align: left;
+                /* 두 줄 이상 넘치는 내용을 한줄로 표시하기 위한 속성 (아래 세가지코드) */
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .container .content table col:nth-child(1) {
+                width: 80px;
+            }
+
+            .container .content table col:nth-child(2) {
+                width: auto;
+            }
+
+            .container .content table col:nth-child(3) {
+                width: 100px;
+            }
+
+            .container .content .more {
+                position: absolute;
+                right: 0;
+                bottom: 100%;
+                font-size: 20px;
+                text-decoration: none;
+                padding: 0px 8px;
+                background: gray;
+            }
+        </style>
+        <script src="./js/jquery-3.7.1.min.js"></script>
+    </head>
+
+    <body>
+        <div class="boardList">
+            <ul class="title">
+                <li class="on"><a href="javascript:;">공지사항</a></li>
+                <li><a href="javascript:;">자유게시판</a></li>
+                <li><a href="javascript:;">상품후기</a></li>
+                <li><a href="javascript:;">Q&amp;A</a></li>
+            </ul>
+            <div class="container">
+                <div class="content on">
+                    <table>
+                        <colgroup>
+                            <col />
+                            <col />
+                            <col />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>제목</th>
+                                <th>날짜</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>공지사항Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ad a modi
+                                    nesciunt inventore ipsam dolore fugit expedita eius eligendi! Tempore molestias quae
+                                    non, rem est velit. Distinctio, sit laborum!</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>공지사항2</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>공지사항3</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>공지사항4</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>공지사항5</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                        </tbody>
+                    </table><a href="#" class="more"><span class="blind">더보기</span>+</a>
+                </div>
+                <div class="content">
+                    <table>
+                        <colgroup>
+                            <col />
+                            <col />
+                            <col />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>제목</th>
+                                <th>날짜</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>자유게시판1</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>공지사항2</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>공지사항3</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>공지사항4</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>공지사항5</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                        </tbody>
+                    </table><a href="#" class="more"><span class="blind">더보기</span>+</a>
+                </div>
+                <div class="content">
+                    <table>
+                        <colgroup>
+                            <col />
+                            <col />
+                            <col />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>제목</th>
+                                <th>날짜</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>상품후기1</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>공지사항2</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>공지사항3</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>공지사항4</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>공지사항5</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                        </tbody>
+                    </table><a href="#" class="more"><span class="blind">더보기</span>+</a>
+                </div>
+                <div class="content">
+                    <table>
+                        <colgroup>
+                            <col />
+                            <col />
+                            <col />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>제목</th>
+                                <th>날짜</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>질의응답1</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>공지사항2</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>공지사항3</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>공지사항4</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>공지사항5</td>
+                                <td>2024-02-07</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="#" class="more"><span class="blind">더보기</span>+</a>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(".title li").on("click", function () {
+                $(this).addClass("on").siblings().removeClass("on")
+                console.log($(this).index())
+                $(this)
+                    .parent()
+                    .next()
+                    .find(".content")
+                    .eq(num)
+                    .addClass("on")
+                    .siblings()
+                    .removeClass("on")
+            })
+        </script>
+    </body>
+
+</html>
